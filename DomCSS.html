@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom CSS</title>
+  <style>
+    body{
+      font-family: Arial;
+    }
+.sub-but{
+   border: none;
+   color: white;
+   background-color: black;
+   border-radius: 50px;
+   padding: 10px 15px;
+   cursor: pointer;
+   font-weight: bold;
+   margin-bottom: 30px;
+}
+.is-sub{
+  background-color: rgb(240, 240, 240);
+  color: black;
+}
+input{
+  font-size: 15px;
+  padding: 10px;
+}
+.cal-but{
+  background-color: green;
+  padding: 12px 15px;
+  font-size: 15px;
+  font-weight: bold;
+  color: aliceblue;
+  cursor: pointer;
+  border: none;
+
+}
+  </style>
+</head>
+<body>
+  <p>Youtube subscriber</p>
+  <button onclick="
+  subscribe ();
+  " class="js-sub sub-but">Subscribe</button>
+
+  <p>Amazon Shipping calculator</p>
+  <p>Order under $40 = +$ 10 Shipping</p>
+  <p>Order over  $40 = FREE shipping</p>
+  <input placeholder="Cost of order" class="js-cost" onkeydown="
+    costKeydown(event);
+  "> <button onclick="
+  calculateTotal();
+  " class="cal-but">Calculate</button>
+  <p class="js-total"></p>
+
+  <p>Rock Paper Scissors CSS</p>
+  <p><a href="new-version.html" target="_self">Click here</a></p>
+
+  <script>
+    function costKeydown(event){
+      if(event.key ==='Enter'){
+      calculateTotal();
+     }
+    }
+    function calculateTotal(){
+       const inputEl = document.querySelector('.js-cost');
+       let cost = Number(inputEl.value);
+       if(cost < 40){
+              cost +=10;
+       }
+       document.querySelector('.js-total').innerHTML = `$${cost}`;
+    }
+    function subscribe(){
+      const buttonEl = document.querySelector('.js-sub');
+
+if( buttonEl.innerHTML === 'Subscribe'){
+    buttonEl.innerHTML = 'Subscribed';
+    buttonEl.classList.add('is-sub');
+}else{
+  buttonEl.innerHTML = 'Subscribe';
+  buttonEl.classList.removes('is-sub');
+}
+    }
+</script>
+</body>
+</html>
